@@ -1,0 +1,56 @@
+{
+  "_from": "node-foursquare-venues",
+  "_id": "node-foursquare-venues@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha1-ZusGPxgwfpMT0J77+oNcsfv64xo=",
+  "_location": "/node-foursquare-venues",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "node-foursquare-venues",
+    "name": "node-foursquare-venues",
+    "escapedName": "node-foursquare-venues",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-foursquare-venues/-/node-foursquare-venues-1.1.0.tgz",
+  "_shasum": "66eb063f18307e9313d09efbfa835cb1fbfae31a",
+  "_spec": "node-foursquare-venues",
+  "_where": "C:\\Users\\Arvind\\Downloads\\FourSquareVenueSearch-master\\FourSquareVenueSearch",
+  "author": {
+    "name": "TJ Krusinski",
+    "email": "tj@futura.io",
+    "url": "http://futura.io"
+  },
+  "bugs": {
+    "url": "https://github.com/FuturaIO/Node-Foursquare-Venues/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "v2 API Wrapper for foursquare venue platform",
+  "devDependencies": {
+    "chai": "1.2.x"
+  },
+  "homepage": "https://github.com/FuturaIO/Node-Foursquare-Venues",
+  "keywords": [
+    "foursquare",
+    "four square"
+  ],
+  "license": "MIT",
+  "main": "./foursquare",
+  "name": "node-foursquare-venues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FuturaIO/Node-Foursquare-Venues.git"
+  },
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "version": "1.1.0"
+}
