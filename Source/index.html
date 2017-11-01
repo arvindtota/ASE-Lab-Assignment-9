@@ -1,83 +1,126 @@
-<!doctype html>
-<html ng-app="Mash">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app.css">
 
-<head >
- <title>Mashup App!</title>
+  <style>
 
+    body{
+      background-image: url("bg.jpg");
+    }
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <div class="page-header" align="center"><h3 style="color:navajowhite;"> MashUp of Translate and Text Sentiment Analysis Api's.</h3></div>
+        .menu input{
+      width: 300px;
+      background: transparent;
+      border: 2px solid #1ab188;
+      border-radius: 4px;
+      color: #5e5e5e;
+      font-family: 'Exo', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 6px;
+      margin-top: 10px;
+          alignment: center;
+    }
+    .menu button{
+        width: 419px;
+        height:40px;
+        background: lightseagreen;
+      alignment: center;
+        border:  2px solid #ffffff;
+        cursor: pointer;
+        border-radius: 4px;
+        color: black;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 6px;
+        margin-top: 10px;
+    }
+        table {
+            max-width: 960px;
+          alignment: center;
+            margin: 10px auto;
+            border: 1px solid #FFF;
+        }
+
+        caption {
+            font-size: 1.6em;
+
+            font-weight: 400;
+            padding: 10px 0;
+        }
+
+        thead th {
+            font-weight: 400;
+            background: #8a97a0;
+            color: #FFF;
+        }
+
+        tr {
+            background: #f4f7f8;
+            border: 1px solid #FFF;
+            margin-bottom: 5px;
+        }
+
+        tr:nth-child(even) {
+            background: #e8eeef;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 20px;
+            font-weight: 300;
+        }
+
+        tfoot tr {
+            background: none;
+        }
+
+        tfoot td {
+            padding: 10px 2px;
+            font-size: 0.8em;
+            font-style: italic;
+            color: #8a97a0;
+        }
+  </style>
+
 </head>
-<body background="bg.jpg" ng-controller="View1Ctrl">
-  <div class="wrapper">
-   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-4 col-md-offset-4 panel panel-default">
-  <div ng-view >
+<body class="body">
 
-    <div   class="left">
 
-     <form class="form-group" align="center">
-         <p><h3><b>Enter the text to translate: </b></h3><input type="text"  class="form-control input-lg" ng-model = "Text" id = "Text"  placeholder="enter text here">
-       <br/>
-        <button type= "submit" class="btn btn-primary" value ="Text" ng-click="translate()">Translate</button>
-      </p>
-    </form>
-        <p><h4>The text entered will be translated from English to Spanish.</h4></p>
-      <div id="div_VenueList">
+  <div  ng-controller="View1Ctrl" style="top: 200px">
+    <div class="menu" id="div_SearchContainer">
+    <h1 align="absolute" style="text-align: center; color: wheat">Venue Search using Foursquare API</h1>
+      <div style="text-align: center"><input type="text" id="txt_placeName" placeholder="Enter the place" style="color: white;"/></div> <br>
+      <div style="text-align: center";><input type="text" id="txt_searchFilter" placeholder="Enter food" style="color: white;" /> </div><br>
+      <div style="text-align: center";>  <button id="btn_getReview" ng-click="getVenues()">Search Venues</button></div>
+    </div>
+    <div id="div_VenueList">
+      <h2 style="text-align: center; color: yellow"> List of top ten venues </h2>
       <ul>
-             <li ng-if="result" style="font-size: x-large; color: #5e5e5e; text-align: center; list-style: none; list-style-position:inside;">
-                <a  href="" ng-click="sentiment(result)" style="font-size: x-large; color: #5e5e5e; text-align: center;"><p ng-bind="result"></p></a>
-              </li>
-            </ul>
-          </div>
+       <li ng-repeat="venue in venueList" style="font-size: x-large; color: #5e5e5e; text-align: center; list-style: none">
+          <div ng-click="getaudio(venue.name)" style="font-size: x-large; color: lightgoldenrodyellow; text-align: center;">{{venue.name}}</div>
+        </li>
+      </ul>
 
-      <div id="div_ReviewList" style="display:none;"  >
-
-
-        <p ng-model="ReviewWithSentiment">
-
-
-   <h4> Here we will be showing you the sentimental analysis of the text entered.</h4>
-        <table class="table table-striped table-bordered table-hover">
-
-
-            <tr>
-        <td>
-     <b>sentiment:  </b>
-        </td>
-        <td>
-        {{ReviewWithSentiment.sentiment}}
-        </td>
-        </tr>
-        <tr>
-    <td>
-    <b>score:  </b>
-    </td>
-    <td>
-    {{ReviewWithSentiment.score}}
-    </td>
-    </tr>
-            <tr>
-                <td> score value: </td>
-                <td> Negative<0 <br> Neutral=0 <br> Positive>0 </td>
-            </tr>
-
-        </table>
-
+    </div>
+    <div id="div_ReviewList" style="display:none;"  >
+        <div align="center" id="Audio"></div>
 
     </div>
   </div>
-</div>
-</div>
 
-
-
-
-    <script src="./scripts/angular.js"></script>
-        <script src="./controllers/Mashup.js"></script>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script src="app.js"></script>
 
 
 </body>
