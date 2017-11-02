@@ -14,8 +14,8 @@ angular.module('myApp', [])
                 document.getElementById('div_ReviewList').style.display = 'none';
                 //This is the API that gives the list of venues based on the place and search query.
                 var handler = $http.get("https://api.foursquare.com/v2/venues/search" +
-                    "?client_id=Q0ENF1YHFTNPJ31DCF13ALLENJW0P5MTH13T1SA0ZP1MUOCI" +
-                    "&client_secret=ZH4CRZNEWBNTALAE3INIB5XG0QI12R4DT5HKAJLWKYE1LHOG" +
+                    "?client_id=01554RJBL4YDGA0HMQJ5YRSDNFD354HOV5RDNXUVILIQP5YH" +
+                    "&client_secret=JVKM1IJVTPMM5LUHQ1R3ECXTGJN2O2HGGQATKLTEWYZ2AA5D" +
                     "&v=20160215&limit=10" +
                     "&near=" + placeEntered +
                     "&query=" + searchQuery);

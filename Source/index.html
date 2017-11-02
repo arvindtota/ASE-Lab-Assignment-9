@@ -34,7 +34,6 @@
         width: 419px;
         height:40px;
         background: lightseagreen;
-      alignment: center;
         border:  2px solid #ffffff;
         cursor: pointer;
         border-radius: 4px;
@@ -47,7 +46,6 @@
     }
         table {
             max-width: 960px;
-          alignment: center;
             margin: 10px auto;
             border: 1px solid #FFF;
         }
@@ -100,7 +98,7 @@
   <div  ng-controller="View1Ctrl" style="top: 200px">
     <div class="menu" id="div_SearchContainer">
     <h1 align="absolute" style="text-align: center; color: wheat">Venue Search using Foursquare API</h1>
-      <div style="text-align: center"><input type="text" id="txt_placeName" placeholder="Enter the place" style="color: white;"/></div> <br>
+      <div style="text-align: center"><input type="text" id="txt_placeName" placeholder="Enter the place" style="color: white;"/></div>
       <div style="text-align: center";><input type="text" id="txt_searchFilter" placeholder="Enter food" style="color: white;" /> </div><br>
       <div style="text-align: center";>  <button id="btn_getReview" ng-click="getVenues()">Search Venues</button></div>
     </div>
@@ -113,6 +111,16 @@
       </ul>
 
     </div>
+
+    <div  ng-controller="View1Ctrl" style="top: 200px">
+      <div class="menu" id="div_SearchContainer">
+        <input type="text" id="txt_placeName" placeholder="Enter to update venue" style="margin-left: 100px"/>
+        <button id="btn_getReview" ng-click="getVenues()">Update Venue</button>
+
+        <input type="text" id="txt_placeName" placeholder="Enter to delete venue" style="margin-left: 100px"/>
+        <button id="btn_getReview" ng-click="getVenues()">Delete Venue</button>      </div>
+
+
     <div id="div_ReviewList" style="display:none;"  >
         <div align="center" id="Audio"></div>
 
